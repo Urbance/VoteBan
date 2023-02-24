@@ -1,0 +1,4 @@
+name: Voteban
+version: '${project.version}'
+main: de.urbance.voteban.Main
+api-version: 1.19
