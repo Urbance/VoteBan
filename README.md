@@ -15,7 +15,7 @@ With VoteBan, servers can be kept clean of griefers or other unwanted players.
 ## Wiki & Support
 Which permissions are available? What does insert feature actually do? All these questions are answered in the Kudos Wiki.
 <br>If you still don't know what to do or have found a bug, feel free to contact me.
-<br>Quicklinks: [Discord](discord.gg/hDqPms3MbH) | Wiki (incomming) | Installation & Setup (incomming) | Commands & Permissions (incomming) 
+<br>Quicklinks: [Discord](https://discord.com/invite/hDqPms3MbH) | Wiki (incomming) | Installation & Setup (incomming) | Commands & Permissions (incomming) 
 
 ## Impressions
 Incomming
