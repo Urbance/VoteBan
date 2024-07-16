@@ -18,4 +18,4 @@ Which permissions are available? What does insert feature actually do? All these
 <br>Quicklinks: [Discord](https://discord.com/invite/hDqPms3MbH) | Wiki (incomming) | Installation & Setup (incomming) | Commands & Permissions (incomming) 
 
 ## Impressions
-Incomming
+<img src="https://github.com/Urbance/VoteBan-Media/blob/main/VoteBan%20Ban%20Screen.png?raw=true"></img>
