@@ -15,7 +15,7 @@ With VoteBan, servers can be kept clean of griefers or other unwanted players.
 ## Wiki & Support
 Which permissions are available? What does insert feature actually do? All these questions are answered in the Kudos Wiki.
 <br>If you still don't know what to do or have found a bug, feel free to contact me.
-<br>Quicklinks: [Discord](https://discord.com/invite/hDqPms3MbH) | Wiki (incomming) | Installation & Setup (incomming) | Commands & Permissions (incomming) 
+<br>Quicklinks: [Discord](https://discord.com/invite/hDqPms3MbH) | [Wiki](https://urbance.gitbook.io/voteban) | [Installation & Setup](https://urbance.gitbook.io/voteban/getting-started/installation-and-setup) | [Commands & Permissions](https://urbance.gitbook.io/voteban/getting-started/commands-and-permissions) 
 
 ## Impressions
 <img src="https://github.com/Urbance/VoteBan-Media/blob/main/VoteBan%20Ban%20Screen.png?raw=true"></img>
