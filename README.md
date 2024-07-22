@@ -19,3 +19,4 @@ Which permissions are available? What does insert feature actually do? All these
 
 ## Impressions
 <img src="https://github.com/Urbance/VoteBan-Media/blob/main/VoteBan%20Ban%20Screen.png?raw=true"></img>
+<img src="https://github.com/Urbance/VoteBan-Media/blob/main/Running%20Vote%20Ban.png?raw=true"></img>
