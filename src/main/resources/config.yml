@@ -1,0 +1,24 @@
+general-settings:
+  prefix: "&7» &cVoteBan&7: "
+  date-format: "HH:mm dd MMMM yyyy"
+  debug-mode: false
+voteban-settings:
+  start-voting-conditions:
+    minimum-online-players: 5
+    required-playtime: 10800
+    maximum-online-team-members: 5
+  ban-conditions:
+    required-joined-ban-players-percentage: 50
+  ban-settings:
+    vote-cooldown: 60
+    ban-duration: 500
+    ban-reason:
+    - '&7==============================='
+    - '&cYou have been votebanned!'
+    - ''
+    - '&7on &f» &e%voteban_ban_start_date%'
+    - '&7until &f» &e%voteban_ban_expiring_date%'
+    - ''
+    - '&7==============================='
+  failed-voteban-settings:
+    immunity-length-target-player: 1800
