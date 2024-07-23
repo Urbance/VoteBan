@@ -7,6 +7,8 @@ With VoteBan, servers can be kept clean of griefers or other unwanted players.
 <br>Players can start votes for a ban against another players. This is particularly useful for small servers. 
 <br>Various settings can be made regarding the conditions under which vote bans may be started and when votes are successful.
 
+The plugin uses [bStats](https://bstats.org/plugin/bukkit/VoteBan/22280).
+
 ## Atttention!
 The current releases are preview versions. Major bugs may occur and not all planned features have been implemented.
 Please report bugs and suggestions at my [Discord server](https://discord.com/invite/hDqPms3MbH).
