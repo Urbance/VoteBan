@@ -21,7 +21,9 @@ public final class Main extends JavaPlugin {
 
         this.prefix = config.getString("general-settings.prefix");
 
-        getLogger().info("VoteBan is now ready");
+        getLogger().info("Successfully launched. Suggestions? Questions? Report a Bug? Visit my discord server! https://discord.gg/hDqPms3MbH");
+        getLogger().info("This is a preview version of VoteBan. Major bugs may occur and not all planned features have been implemented.");
+
         getCommand("voteban").setExecutor(new VoteBan());
         getCommand("voteban").setTabCompleter(new VoteBan());
         getCommand("vba").setExecutor(new Vba());
@@ -30,6 +32,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        getLogger().info("VoteBan disabled.");
     }
 
     private void setupConfigs() {
