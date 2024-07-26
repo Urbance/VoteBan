@@ -11,7 +11,7 @@ The plugin uses [bStats](https://bstats.org/plugin/bukkit/VoteBan/22280).
 
 ## Atttention!
 The current releases are preview versions. Major bugs may occur and not all planned features have been implemented.
-Please report bugs and suggestions at my [Discord server](https://discord.com/invite/hDqPms3MbH).
+Please report bugs and suggestions on my [Discord server](https://discord.com/invite/hDqPms3MbH).
 
 The following ToDos are planned for the next updates:
 - MySQL and/or SQLite implementation 
