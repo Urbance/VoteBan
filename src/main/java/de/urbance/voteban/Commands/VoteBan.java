@@ -10,6 +10,7 @@ import org.bukkit.Statistic;
 import org.bukkit.command.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -200,8 +201,21 @@ public class VoteBan implements CommandExecutor, TabCompleter {
                 if (sender.hasPermission("voteban.player.start") || sender.hasPermission("voteban.player.*")) tabCompletions.add("start");
                 if (sender.hasPermission("voteban.player.join") || sender.hasPermission("voteban.player.*")) tabCompletions.add("join");
             }
-        }
+            case 2 -> {
+                if (!args[0].equals("start")) return tabCompletions;
 
+                if (sender.hasPermission("voteban.player.start") || sender.hasPermission("voteban.player.*")) {
+                    List<String> playerNameList = new ArrayList<>();
+
+                    for (Player player : Bukkit.getOnlinePlayers()) {
+                        if (player.getName().equals(sender.getName())) continue;
+                        playerNameList.add(player.getName());
+                    }
+
+                    StringUtil.copyPartialMatches(args[1], playerNameList, tabCompletions);
+                }
+            }
+        }
         return tabCompletions;
     }
 }
