@@ -51,7 +51,7 @@ public class VoteManager {
 
     private boolean checkConditionsForNewVoting(CommandSender sender) {
         if (!isPercentageRequiredValueIsValid()) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "An error has occurred. Please contact the administrator of the server."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messagesConfig.getString("errors.error-has-occurred")));
             plugin.getLogger().warning("An error has occured - The value 'voteban.ban-conditions.required-joined-ban-players-percentage' in the config.yml must be an integer between 0 to 100!");
             return false;
         }

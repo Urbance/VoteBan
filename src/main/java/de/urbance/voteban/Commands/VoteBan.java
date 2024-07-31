@@ -80,7 +80,7 @@ public class VoteBan implements CommandExecutor, TabCompleter {
     private void joinVoteBan(CommandSender sender) {
         if (sender.hasPermission("voteban.player.join") || sender.hasPermission("voteban.player.*")) {
             if (!plugin.isVotingRunning) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "There isn't a running voting!"));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messagesConfig.getString("errors.no-running-vote")));
                 return;
             }
             if (sender instanceof ConsoleCommandSender) {
@@ -88,16 +88,18 @@ public class VoteBan implements CommandExecutor, TabCompleter {
                 return;
             }
             if (VoteManager.voteInitiator == ((Player) sender).getUniqueId()) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "You already joined the voting."));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messagesConfig.getString("errors.player-already-joined-vote")));
                 return;
             }
             if (VoteManager.voteTarget == ((Player) sender).getUniqueId()) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "You can't join the voting."));
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messagesConfig.getString("errors.player-cannot-join-vote")));
                 return;
             }
 
             voteManager.addJoin();
-            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix + "The player &e" + sender.getName() + " &7joined the voteban!"));
+            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                    messagesConfig.getString("voting.player-joined-vote")
+                            .replaceAll("%voteban_player_name%", sender.getName())));
             return;
         }
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messagesConfig.getString("errors.no-permission")));
