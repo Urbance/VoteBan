@@ -18,13 +18,11 @@ public class Immunity {
         this.immunityDataFileManager = new FileManager("immunity.yml", Main.getPlugin(Main.class));
         this.immunityData = immunityDataFileManager.getConfig();
         this.player = player;
-        this.immunityPlayerBasePath = "players." + player.getUniqueId();
+        this.immunityPlayerBasePath = "players." + this.player.getUniqueId();
         this.immunityUntilPath = immunityPlayerBasePath + ".until";
     }
 
     public boolean addPlayer(LocalDateTime date) {
-        // TODO Add option for immunity length
-
         try {
             immunityData.set(immunityUntilPath, date.toString());
             immunityDataFileManager.save();
