@@ -85,7 +85,7 @@ public class VoteManager {
 
     private void startVotingCountdown() {;
         new BukkitRunnable() {
-            final int duration = config.getInt("voteban-settings.ban-settings.vote-cooldown");
+            final int duration = config.getInt("voteban-settings.ban-settings.general-settings.vote-cooldown");
             int remainingSeconds = duration;
 
 
