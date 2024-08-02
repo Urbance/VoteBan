@@ -5,7 +5,7 @@ general-settings:
 voteban-settings:
   general-settings:
     vote-cooldown: 60
-
+    player-start-voteban-cooldown: 300
   start-voting-conditions:
     minimum-online-players: 5
     required-playtime: 10800

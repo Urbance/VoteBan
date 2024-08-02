@@ -28,3 +28,4 @@ errors:
   no-running-vote: "&7There isn't a running vote."
   player-already-joined-vote: "67You already joined the vote."
   player-cannot-join-vote: "&7You can't join the vote."
+  player-has-voteban-command-cooldown: "&7You already started a voteban recently. Please wait &e%voteban_voteban_command_cooldown% seconds&7."
