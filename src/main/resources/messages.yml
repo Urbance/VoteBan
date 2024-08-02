@@ -6,7 +6,7 @@ help:
   - "&7/voteban start &e[player]"
   - "&7/voteban join"
 voting:
-  start: "&7The player &e%voteban_player_name% &7started a vote ban against &e%voteban_targetplayer_name%&7. It needs &e%voteban_players_needed% players &7for a ban. With &e/voteban join &7you'll join the voteban."
+  start: "&7The player &e%voteban_player_name% &7started a voteban against &e%voteban_targetplayer_name%&7. It needs &e%voteban_players_needed% players &7for a ban. With &e/voteban join &7you'll join the voteban."
   start-initiator: "&7You have started a vote ban against the player &e%voteban_targetplayer_name%&7. It needs &e%voteban_players_needed% players &7for a ban."
   player-joined-vote: "&7The player &e%voteban_player_name% &7joined the voteban!"
   player-was-banned: "&7The player &e%voteban_targetplayer_name% &7was successfully banned!"
