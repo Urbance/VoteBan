@@ -3,6 +3,9 @@ general-settings:
   date-format: "HH:mm dd MMMM yyyy"
   debug-mode: false
 voteban-settings:
+  general-settings:
+    vote-cooldown: 60
+    player-start-voteban-cooldown: 300
   start-voting-conditions:
     minimum-online-players: 5
     required-playtime: 10800
@@ -10,7 +13,6 @@ voteban-settings:
   ban-conditions:
     required-joined-ban-players-percentage: 50
   ban-settings:
-    vote-cooldown: 60
     ban-duration: 500
     ban-reason:
     - '&7==============================='

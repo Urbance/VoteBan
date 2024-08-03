@@ -20,6 +20,7 @@ public class VoteManager {
     public Player voteTargetPlayer;
     private FileConfiguration config;
     private FileConfiguration messagesConfig;
+    private VoteBanCommandCooldown voteBanCommandCooldown;
     private Main plugin;
     private String prefix;
     private int voteJoinedPlayers;
@@ -34,29 +35,35 @@ public class VoteManager {
     }
 
     public void initVoteBan(CommandSender sender, Player voteTargetPlayer) {
-        if (!checkConditionsForNewVoting(sender)) {
-            return;
-        }
-
         voteInitiator = ((Player) sender).getUniqueId();
         voteTarget = voteTargetPlayer.getUniqueId();
+
+        if (!checkConditionsForNewVoting(sender)) return;
+
         plugin.isVotingRunning = true;
         this.voteTargetPlayer = voteTargetPlayer;
 
         new DebugMode().printStartVoteInformations();
 
         determineNeededPlayersForSuccessfulVoteBan();
-        startVoteBan(sender);
+        startVoteBan();
     }
 
     private boolean checkConditionsForNewVoting(CommandSender sender) {
         if (!isPercentageRequiredValueIsValid()) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + "An error has occurred. Please contact the administrator of the server."));
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messagesConfig.getString("errors.error-has-occurred")));
             plugin.getLogger().warning("An error has occured - The value 'voteban.ban-conditions.required-joined-ban-players-percentage' in the config.yml must be an integer between 0 to 100!");
             return false;
         }
         if (plugin.isVotingRunning) {
             sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix + messagesConfig.getString("errors.already-a-running-voting")));
+            return false;
+        }
+
+        this.voteBanCommandCooldown = new VoteBanCommandCooldown();
+        if (voteBanCommandCooldown.playerHasCommandCooldown(voteInitiator)) {
+            sender.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
+                    replacePlaceholders(messagesConfig.getString("errors.player-has-voteban-command-cooldown"), voteTargetPlayer)));
             return false;
         }
 
@@ -69,14 +76,14 @@ public class VoteManager {
         this.playersNeededForBan = (int) Math.ceil(doublePlayersNeededForBan);
     }
 
-    private void startVoteBan(CommandSender sender) {
+    private void startVoteBan() {
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (player.getUniqueId().equals(voteInitiator)) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
-                        replacePlaceholders(messagesConfig.getString("voting.start-initiator"), sender, voteTargetPlayer)));
+                        replacePlaceholders(messagesConfig.getString("voting.start-initiator"), voteTargetPlayer)));
             } else {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&', prefix +
-                        replacePlaceholders(messagesConfig.getString("voting.start"), sender, voteTargetPlayer)));
+                        replacePlaceholders(messagesConfig.getString("voting.start"), voteTargetPlayer)));
             }
         }
         addJoin();
@@ -85,9 +92,8 @@ public class VoteManager {
 
     private void startVotingCountdown() {;
         new BukkitRunnable() {
-            final int duration = config.getInt("voteban-settings.ban-settings.vote-cooldown");
+            final int duration = config.getInt("voteban-settings.general-settings.vote-cooldown");
             int remainingSeconds = duration;
-
 
             @Override
             public void run() {
@@ -97,8 +103,13 @@ public class VoteManager {
                 }
                 if (remainingSeconds == 0) {
                     banPlayer(voteTargetPlayer);
+
                     new DebugMode().printFinishedVoteInformations(playersNeededForBan, voteJoinedPlayers);
+
+                    new VoteBanCommandCooldown().addPlayer(voteInitiator);
+
                     resetValues();
+
                     this.cancel();
                 }
                 remainingSeconds--;
@@ -152,11 +163,12 @@ public class VoteManager {
         }
     }
 
-    private String replacePlaceholders(String message, CommandSender sender, Player targetPlayer) {
+    private String replacePlaceholders(String message, Player targetPlayer) {
         Map<String, String> values = new HashMap<>();
-        values.put("voteban_player_name", sender.getName());
+        values.put("voteban_player_name", Bukkit.getPlayer(voteInitiator).getName());
         values.put("voteban_targetplayer_name", targetPlayer.getName());
         values.put("voteban_players_needed", String.valueOf(playersNeededForBan));
+        values.put("voteban_voteban_command_cooldown", String.valueOf(voteBanCommandCooldown.getPlayerCommandCooldown(voteInitiator)));
 
         return new Placeholders(message, values).set();
     }
