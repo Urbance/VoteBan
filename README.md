@@ -2,6 +2,9 @@
   <img src="https://github.com/Urbance/VoteBan-Media/blob/main/VoteBan%20Banner.png?raw=true"></img>
 </div>
 
+> [!CAUTION]
+> This repository moved to Codeberg: https://codeberg.org/Urbance/VoteBan
+
 ## Introduction
 With VoteBan, servers can be kept clean of griefers or other unwanted players. 
 <br>Players can start votes for a ban against another players. This is particularly useful for small servers. 
